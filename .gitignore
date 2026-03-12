@@ -485,3 +485,4 @@ $RECYCLE.BIN/
 CourseAssets/
 API/appsettings.json
 API/reactivity.db
+.vscode/
