@@ -13,6 +13,9 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 
 builder.Services.AddCors();
 
+builder.Services.AddMediatR(x => x.RegisterServicesFromAssemblyContaining<Application.Activities.Queries.GetActivityList.Handler>());
+builder.Services.AddAutoMapper(x => x.AddProfile<Application.Core.MappingProfiles>());
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

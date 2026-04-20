@@ -486,3 +486,5 @@ CourseAssets/
 API/appsettings.json
 API/reactivity.db
 .vscode/
+API/reactivity.db-shm
+API/reactivity.db-wal
