@@ -41,9 +41,11 @@ function App() {
     setEditMode(false);
   };
 
-  const handleSubmitForm = (activity : Activity) => {
+  const handleSubmitForm = (activity: Activity) => {
     if (activity.id) {
-      setActivities(activities.map((a) => (a.id === activity.id ? activity : a)));
+      setActivities(
+        activities.map((a) => (a.id === activity.id ? activity : a)),
+      );
       setSelectedActivity(activity);
     } else {
       activity.id = crypto.randomUUID();
