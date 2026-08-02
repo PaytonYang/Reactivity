@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Domain;
 using Application.Activities.Queries;
 using Application.Activities.Commands;
+using Application.Activities.DTOs;
 
 namespace API.Controllers;
 
@@ -17,26 +18,24 @@ public class ActivitiesController : BaseController
     [HttpGet("{id}")]
     public async Task<ActionResult<Activity>> GetActivity(string id)
     {
-        return await this.Mediator.Send(new GetActivityDetails.Query { Id = id });
+        return this.HandleResult(await this.Mediator.Send(new GetActivityDetails.Query { Id = id }));
     }
 
     [HttpPost]
-    public async Task<ActionResult<string>> AddActivity(Activity activity)
+    public async Task<ActionResult<string>> AddActivity(CreateActivityDto activityDto)
     {
-        return await this.Mediator.Send(new AddActivity.Command { Activity = activity });
+        return this.HandleResult(await this.Mediator.Send(new AddActivity.Command { ActivityDto = activityDto }));
     }
 
     [HttpPut]
-    public async Task<ActionResult> EditActivity(Activity activity)
+    public async Task<ActionResult> EditActivity(EditActivityDto activityDto)
     {
-        await this.Mediator.Send(new EditActivity.Command { Activity = activity });
-        return Ok();
+        return this.HandleResult(await this.Mediator.Send(new EditActivity.Command { ActivityDto = activityDto }));
     }
 
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteActivity(string id)
     {
-        await this.Mediator.Send(new DeleteActivity.Command { Id = id });
-        return Ok();
+        return this.HandleResult(await this.Mediator.Send(new DeleteActivity.Command { Id = id }));
     }
 }

@@ -13,14 +13,19 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="16.1.1" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
     <PackageReference Include="MediatR" Version="12.5.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Activities\" />
     <Folder Include="Activities\Commands\" />
     <Folder Include="Activities\Queries\" />
+    <Folder Include="Activities\Validators\" />
     <Folder Include="Core\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Activities\DTOs\CreateActivityDto.cs" />
   </ItemGroup>
 
 </Project>
